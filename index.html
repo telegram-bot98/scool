@@ -19,21 +19,22 @@ iframe { width:100%; height:400px; border:1px solid #ccc; border-radius:8px; mar
 footer { background:#2c3e50; color:#fff; text-align:center; padding:20px; margin-top:30px; }
 .social a { color:#fff; margin:0 10px; font-size:1.5rem; transition:0.3s; }
 .social a:hover { color:#e74c3c; }
-/* امتحانات */
-.quiz button { display:block; margin:10px 0; padding:10px; border:none; border-radius:5px; cursor:pointer; }
-.quiz button.correct { background:#27ae60; color:#fff; }
-.quiz button.wrong { background:#c0392b; color:#fff; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
 .book-card { margin-bottom:20px; }
+.btn-test { display:inline-block; background:#e74c3c; color:#fff; padding:8px 15px; border-radius:5px; text-decoration:none; margin-bottom:10px; cursor:pointer; }
+.test-container { display:none; background:#f1f1f1; padding:15px; border-radius:5px; margin-bottom:15px; }
+.test-container.active { display:block; }
 </style>
 </head>
 <body>
 
 <header>
 <h1>📚 منصة أحمد خان التعليمية</h1>
-<p>المرحلة المتوسطة والإعدادية • كتب وملازم • امتحانات</p>
+<p>جميع المواد للمرحلة المتوسطة والإعدادية • كتب وملازم • امتحانات</p>
 </header>
 
-<!-- Tabs -->
+<!-- تبويبات المرحلة -->
 <nav>
 <button class="tab-btn active" data-target="middle">المرحلة المتوسطة</button>
 <button class="tab-btn" data-target="secondary">المرحلة الإعدادية</button>
@@ -42,117 +43,59 @@ footer { background:#2c3e50; color:#fff; text-align:center; padding:20px; margin
 <div class="container">
 
 <!-- المرحلة المتوسطة -->
-<div class="section tab-content" id="middle">
+<div class="section tab-content active" id="middle">
 <h2>📗 المرحلة المتوسطة</h2>
 
-<!-- الصف الأول متوسط -->
+<!-- مثال الصف 1 متوسط لكل مادة -->
+<h3>الصف 1 متوسط</h3>
 <div class="book-card">
-<h3>الرياضيات - الصف الأول متوسط (Mathematics)</h3>
+<h4>الرياضيات - الصف 1 متوسط</h4>
 <iframe src="books/math1_middle.pdf"></iframe>
+<button class="btn-test" onclick="toggleTest('math1_middle')">ابدأ الاختبار</button>
+<div class="test-container" id="test-math1_middle">
+<p>هذه مساحة الاختبار التفاعلي للمادة الرياضيات الصف 1 متوسط</p>
 </div>
-<div class="book-card">
-<h3>اللغة العربية - الصف الأول متوسط (Arabic)</h3>
-<iframe src="books/arabic1_middle.pdf"></iframe>
-</div>
-<div class="book-card">
-<h3>العلوم - الصف الأول متوسط (Science)</h3>
-<iframe src="books/science1_middle.pdf"></iframe>
 </div>
 
-<!-- الصف الثاني متوسط -->
 <div class="book-card">
-<h3>الرياضيات - الصف الثاني متوسط (Mathematics)</h3>
-<iframe src="books/math2_middle.pdf"></iframe>
+<h4>التربية الإسلامية - الصف 1 متوسط</h4>
+<iframe src="books/islamic1_middle.pdf"></iframe>
+<button class="btn-test" onclick="toggleTest('islamic1_middle')">ابدأ الاختبار</button>
+<div class="test-container" id="test-islamic1_middle">
+<p>هذه مساحة الاختبار التفاعلي للتربية الإسلامية الصف 1 متوسط</p>
 </div>
-<div class="book-card">
-<h3>اللغة العربية - الصف الثاني متوسط (Arabic)</h3>
-<iframe src="books/arabic2_middle.pdf"></iframe>
-</div>
-<div class="book-card">
-<h3>العلوم - الصف الثاني متوسط (Science)</h3>
-<iframe src="books/science2_middle.pdf"></iframe>
 </div>
 
-<!-- الصف الثالث متوسط -->
-<div class="book-card">
-<h3>الرياضيات - الصف الثالث متوسط (Mathematics)</h3>
-<iframe src="books/math3_middle.pdf"></iframe>
-</div>
-<div class="book-card">
-<h3>اللغة العربية - الصف الثالث متوسط (Arabic)</h3>
-<iframe src="books/arabic3_middle.pdf"></iframe>
-</div>
-<div class="book-card">
-<h3>العلوم - الصف الثالث متوسط (Science)</h3>
-<iframe src="books/science3_middle.pdf"></iframe>
-</div>
-
-<h2>📝 امتحانات تجريبية</h2>
-<div class="quiz">
-<p>1- 5 × 6 = ؟</p>
-<button onclick="checkAnswer(this,true)">30</button>
-<button onclick="checkAnswer(this,false)">20</button>
-<button onclick="checkAnswer(this,false)">15</button>
-</div>
+<!-- تقدر تضيف باقي الصفوف والمواد بنفس الشكل -->
 
 </div>
 
 <!-- المرحلة الإعدادية -->
-<div class="section tab-content" id="secondary" style="display:none;">
+<div class="section tab-content" id="secondary">
 <h2>📕 المرحلة الإعدادية</h2>
 
-<!-- الصف الأول إعدادي -->
+<h3>الصف 1 إعدادي</h3>
 <div class="book-card">
-<h3>الرياضيات - الصف الأول إعدادي (Mathematics)</h3>
+<h4>الرياضيات - الصف 1 إعدادي</h4>
 <iframe src="books/math1_secondary.pdf"></iframe>
+<button class="btn-test" onclick="toggleTest('math1_secondary')">ابدأ الاختبار</button>
+<div class="test-container" id="test-math1_secondary">
+<p>هذه مساحة الاختبار التفاعلي للمادة الرياضيات الصف 1 إعدادي</p>
 </div>
-<div class="book-card">
-<h3>اللغة العربية - الصف الأول إعدادي (Arabic)</h3>
-<iframe src="books/arabic1_secondary.pdf"></iframe>
-</div>
-<div class="book-card">
-<h3>العلوم - الصف الأول إعدادي (Science)</h3>
-<iframe src="books/science1_secondary.pdf"></iframe>
 </div>
 
-<!-- الصف الثاني إعدادي -->
 <div class="book-card">
-<h3>الرياضيات - الصف الثاني إعدادي (Mathematics)</h3>
-<iframe src="books/math2_secondary.pdf"></iframe>
+<h4>التربية الإسلامية - الصف 1 إعدادي</h4>
+<iframe src="books/islamic1_secondary.pdf"></iframe>
+<button class="btn-test" onclick="toggleTest('islamic1_secondary')">ابدأ الاختبار</button>
+<div class="test-container" id="test-islamic1_secondary">
+<p>هذه مساحة الاختبار التفاعلي للتربية الإسلامية الصف 1 إعدادي</p>
 </div>
-<div class="book-card">
-<h3>اللغة العربية - الصف الثاني إعدادي (Arabic)</h3>
-<iframe src="books/arabic2_secondary.pdf"></iframe>
-</div>
-<div class="book-card">
-<h3>العلوم - الصف الثاني إعدادي (Science)</h3>
-<iframe src="books/science2_secondary.pdf"></iframe>
 </div>
 
-<!-- الصف الثالث إعدادي -->
-<div class="book-card">
-<h3>الرياضيات - الصف الثالث إعدادي (Mathematics)</h3>
-<iframe src="books/math3_secondary.pdf"></iframe>
-</div>
-<div class="book-card">
-<h3>اللغة العربية - الصف الثالث إعدادي (Arabic)</h3>
-<iframe src="books/arabic3_secondary.pdf"></iframe>
-</div>
-<div class="book-card">
-<h3>العلوم - الصف الثالث إعدادي (Science)</h3>
-<iframe src="books/science3_secondary.pdf"></iframe>
-</div>
-
-<h2>📝 امتحانات تجريبية</h2>
-<div class="quiz">
-<p>1- رمز الماء الكيميائي؟</p>
-<button onclick="checkAnswer(this,true)">H₂O</button>
-<button onclick="checkAnswer(this,false)">CO₂</button>
-<button onclick="checkAnswer(this,false)">O₂</button>
-</div>
+<!-- تقدر تضيف باقي الصفوف والمواد بنفس الشكل -->
 
 </div>
-
 </div>
 
 <footer>
@@ -175,16 +118,17 @@ btn.addEventListener("click", ()=>{
   btn.classList.add("active");
   let target = btn.getAttribute("data-target");
   contents.forEach(c=>{
-    c.style.display = (c.id===target) ? "block" : "none";
+    c.classList.remove("active");
+    if(c.id===target) c.classList.add("active");
   });
 });
 });
 
-// فحص الإجابات
-function checkAnswer(button, correct){
-  if(correct){ button.classList.add("correct"); }
-  else { button.classList.add("wrong"); }
-  button.disabled = true;
+// فتح وإغلاق الاختبارات
+function toggleTest(id) {
+    const el = document.getElementById('test-' + id);
+    if(el.classList.contains('active')) el.classList.remove('active');
+    else el.classList.add('active');
 }
 </script>
 
