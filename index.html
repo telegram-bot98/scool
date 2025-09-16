@@ -1,716 +1,192 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة أحمد خان التعليمية - الكتب والملازم الدراسية العراقية</title>
-    <meta name="description" content="منصة تعليمية شاملة لجميع المراحل الدراسية في العراق - كتب، ملازم، ملخصات، ونظام اختبارات">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #4a6491;
-            --accent-color: #e74c3c;
-            --light-color: #f5f7fa;
-            --dark-color: #2c3e50;
-            --success-color: #2ecc71;
-            --warning-color: #f39c12;
-            --text-color: #333;
-            --border-radius: 10px;
-            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-        
-        body {
-            background-color: var(--light-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding-top: 80px; /* للهيدر الثابت */
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* الهيدر */
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            font-size: 1.5rem;
-            margin-right: 15px;
-        }
-        
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            background-color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-        
-        nav ul li a:hover, 
-        nav ul li a.active {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* القسم الرئيسي */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            padding: 100px 0;
-            text-align: center;
-            color: white;
-            border-radius: var(--border-radius);
-            margin: 20px 0;
-        }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            margin: 5px;
-        }
-        
-        .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-        }
-        
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary-color);
-        }
-        
-        /* المميزات */
-        .features {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--accent-color);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .feature-icon {
-            background: var(--secondary-color);
-            color: white;
-            font-size: 2rem;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .feature-content {
-            padding: 20px;
-        }
-        
-        .feature-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        /* المراحل الدراسية */
-        .stages {
-            background-color: #edf2f7;
-            padding: 80px 0;
-        }
-        
-        .stages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-        
-        .stage-card {
-            background: white;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-        
-        .stage-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stage-card i {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-        
-        .stage-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        /* الاختبارات */
-        .tests {
-            padding: 80px 0;
-        }
-        
-        .test-content {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--box-shadow);
-            margin-bottom: 30px;
-        }
-        
-        .test-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .test-step {
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .test-step i {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-        
-        .test-step h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        /* آراء الطلاب */
-        .testimonials {
-            padding: 80px 0;
-            background: #edf2f7;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: '\f10d';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            opacity: 0.3;
-        }
-        
-        .testimonial-card p {
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-        
-        .testimonial-card .student {
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-        
-        /* الفوتر */
-        footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--accent-color);
-        }
-        
-        .social-links a {
-            display: inline-block;
-            margin-left: 15px;
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* responsive */
-        @media (max-width: 992px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding-top: 120px;
-            }
-            
-            .logo h1 {
-                font-size: 1.3rem;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                top: 20px;
-                left: 20px;
-            }
-            
-            .header-content {
-                flex-direction: column;
-            }
-            
-            nav {
-                width: 100%;
-                display: none;
-            }
-            
-            nav.active {
-                display: block;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة أحمد خان التعليمية</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body { font-family:'Tajawal',sans-serif; margin:0; background:#f9f9f9; }
+header { background:#2c3e50; color:#fff; padding:15px; text-align:center; }
+h1 { margin:0; }
+nav { background:#34495e; display:flex; justify-content:center; flex-wrap:wrap; }
+nav button { flex:1; padding:15px; border:none; background:#34495e; color:#fff; cursor:pointer; font-size:1rem; }
+nav button.active { background:#e74c3c; }
+.container { width:95%; margin:auto; padding:20px 0; }
+.section { background:#fff; padding:20px; margin:20px 0; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.1);}
+h2 { margin-bottom:15px; color:#2c3e50; }
+iframe { width:100%; height:400px; border:1px solid #ccc; border-radius:8px; margin-bottom:15px; }
+footer { background:#2c3e50; color:#fff; text-align:center; padding:20px; margin-top:30px; }
+.social a { color:#fff; margin:0 10px; font-size:1.5rem; transition:0.3s; }
+.social a:hover { color:#e74c3c; }
+/* امتحانات */
+.quiz button { display:block; margin:10px 0; padding:10px; border:none; border-radius:5px; cursor:pointer; }
+.quiz button.correct { background:#27ae60; color:#fff; }
+.quiz button.wrong { background:#c0392b; color:#fff; }
+.book-card { margin-bottom:20px; }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="logo">
-                    <div class="logo-img">AK</div>
-                    <h1>أحمد خان للتعليم</h1>
-                </div>
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="#" class="active">الرئيسية</a></li>
-                        <li><a href="#">المناهج الدراسية</a></li>
-                        <li><a href="#">الملخصات</a></li>
-                        <li><a href="#">الاختبارات</a></li>
-                        <li><a href="#">اتصل بنا</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>منصة أحمد خان التعليمية الشاملة</h2>
-                <p>جميع الكتب والملخصات والملازم الدراسية لجميع المراحل في العراق مع نظام متكامل للمراجعة والاختبارات</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn">ابدأ التعلم الآن</a>
-                    <a href="#" class="btn btn-outline">تصفح المواد</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<header>
+<h1>📚 منصة أحمد خان التعليمية</h1>
+<p>المرحلة المتوسطة والإعدادية • كتب وملازم • امتحانات</p>
+</header>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">مميزات المنصة</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>كتب دراسية شاملة</h3>
-                        <p>جميع الكتب المدرسية لجميع المراحل الدراسية في العراق متاحة للتحميل والدراسة عبر المنصة</p>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>ملخصات وملازم</h3>
-                        <p>ملخصات وملازم معدة من قبل أساتذة متخصصين لتسهيل عملية الدراسة والمراجعة</p>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h3>نظام اختبارات متكامل</h3>
-                        <p>اختبر معرفتك من خلال نظام اختبارات متكامل مع تصحيح آلي وتقارير أداء مفصلة</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Tabs -->
+<nav>
+<button class="tab-btn active" data-target="middle">المرحلة المتوسطة</button>
+<button class="tab-btn" data-target="secondary">المرحلة الإعدادية</button>
+</nav>
 
-    <!-- Stages Section -->
-    <section class="stages">
-        <div class="container">
-            <h2 class="section-title">المراحل الدراسية</h2>
-            <div class="stages-grid">
-                <div class="stage-card">
-                    <i class="fas fa-child"></i>
-                    <h3>المرحلة الابتدائية</h3>
-                    <p>من الصف الأول إلى السادس الابتدائي</p>
-                    <a href="#" class="btn" style="margin-top: 15px;">تصفح المواد</a>
-                </div>
-                
-                <div class="stage-card">
-                    <i class="fas fa-user-graduate"></i>
-                    <h3>المرحلة المتوسطة</h3>
-                    <p>من الأول إلى الثالث المتوسط</p>
-                    <a href="#" class="btn" style="margin-top: 15px;">تصفح المواد</a>
-                </div>
-                
-                <div class="stage-card">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>المرحلة الإعدادية</h3>
-                    <p>من الأول إلى السادس الإعدادي</p>
-                    <a href="#" class="btn" style="margin-top: 15px;">تصفح المواد</a>
-                </div>
-                
-                <div class="stage-card">
-                    <i class="fas fa-book-reader"></i>
-                    <h3>مراحل أخرى</h3>
-                    <p>مواد للمراحل الجامعية والدراسات العليا</p>
-                    <a href="#" class="btn" style="margin-top: 15px;">تصفح المواد</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="container">
 
-    <!-- Tests Section -->
-    <section class="tests">
-        <div class="container">
-            <h2 class="section-title">نظام الاختبارات</h2>
-            <div class="test-content">
-                <p>يوفر الموقع نظاماً متكاملاً للاختبارات يتيح للطلاب تقييم مستواهم في مختلف المواد الدراسية. يمكنك اختيار المادة والصف والوحدة ثم إجراء الاختبار والحصول على النتائج فوراً.</p>
-                
-                <div class="test-steps">
-                    <div class="test-step">
-                        <i class="fas fa-book-open"></i>
-                        <h3>اختر المادة</h3>
-                        <p>اختر من بين جميع المواد الدراسية</p>
-                    </div>
-                    
-                    <div class="test-step">
-                        <i class="fas fa-cog"></i>
-                        <h3>اضبط الاختبار</h3>
-                        <p>حدد عدد الأسئلة ومستوى الصعوبة</p>
-                    </div>
-                    
-                    <div class="test-step">
-                        <i class="fas fa-pencil-alt"></i>
-                        <h3>أجب على الأسئلة</h3>
-                        <p>أجب على الأسئلة في الوقت المحدد</p>
-                    </div>
-                    
-                    <div class="test-step">
-                        <i class="fas fa-chart-bar"></i>
-                        <h3>احصل على النتائج</h3>
-                        <p>احصل على تقرير مفصل عن أدائك</p>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="#" class="btn">جرب الاختبارات الآن</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- المرحلة المتوسطة -->
+<div class="section tab-content" id="middle">
+<h2>📗 المرحلة المتوسطة</h2>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">آراء الطلاب</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"المنصة ساعدتني كثيراً في فهم المواد الدراسية وتحسين مستواي، خاصة نظام الاختبارات الذي يمكنني من قياس مستواي باستمرار"</p>
-                    <div class="student">- أحمد، طالب في الصف السادس الإعدادي</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p>"الملخصات الموجودة على المنصة اختصرت علي الكثير من الوقت ووفرت علي عناء البحث عن المعلومات المهمة في كل مادة"</p>
-                    <div class="student">- سارة، طالبة في الثالث متوسط</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p>"أفضل منصة تعليمية عراقية شاملة، فيها كل ما يحتاجه الطالب من كتب وملخصات واختبارات، أشكر القائمين عليها"</p>
-                    <div class="student">- علي، طالب في المرحلة الجامعية</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- الصف الأول متوسط -->
+<div class="book-card">
+<h3>الرياضيات - الصف الأول متوسط (Mathematics)</h3>
+<iframe src="books/math1_middle.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>اللغة العربية - الصف الأول متوسط (Arabic)</h3>
+<iframe src="books/arabic1_middle.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>العلوم - الصف الأول متوسط (Science)</h3>
+<iframe src="books/science1_middle.pdf"></iframe>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>عن منصة أحمد خان</h3>
-                    <p>منصة تعليمية شاملة تهدف إلى مساعدة الطلاب العراقيين في جميع مراحلهم الدراسية من خلال توفير الكتب والملخصات والاختبارات الإلكترونية.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>وسائل التواصل</h3>
-                    <p>تواصل معنا عبر منصات التواصل الاجتماعي:</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/_98sf" target="_blank" title="انستغرام">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@_98ak" target="_blank" title="تيك توك">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://t.me/AHMED_KHANA" target="_blank" title="تيلجرام">
-                            <i class="fab fa-telegram"></i>
-                        </a>
-                        <a href="mailto:info@ahmedkhan.com" title="البريد الإلكتروني">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>المراحل المتاحة</h3>
-                    <ul>
-                        <li>المرحلة الابتدائية</li>
-                        <li>المرحلة المتوسطة</li>
-                        <li>المرحلة الإعدادية</li>
-                        <li>المراحل الجامعية</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>تمت البرمجة بواسطة أحمد خان &copy; 2023. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
+<!-- الصف الثاني متوسط -->
+<div class="book-card">
+<h3>الرياضيات - الصف الثاني متوسط (Mathematics)</h3>
+<iframe src="books/math2_middle.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>اللغة العربية - الصف الثاني متوسط (Arabic)</h3>
+<iframe src="books/arabic2_middle.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>العلوم - الصف الثاني متوسط (Science)</h3>
+<iframe src="books/science2_middle.pdf"></iframe>
+</div>
 
-    <script>
-        // كود الجافاسكريبت للتفاعلية
-        document.addEventListener('DOMContentLoaded', function() {
-            // زر القائمة للموبايل
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
-            });
-            
-            // إغلاق القائمة عند النقر على رابط
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth < 768) {
-                        mainNav.classList.remove('active');
-                    }
-                });
-            });
-            
-            // إضافة تأثير التمرير السلس للروابط
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+<!-- الصف الثالث متوسط -->
+<div class="book-card">
+<h3>الرياضيات - الصف الثالث متوسط (Mathematics)</h3>
+<iframe src="books/math3_middle.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>اللغة العربية - الصف الثالث متوسط (Arabic)</h3>
+<iframe src="books/arabic3_middle.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>العلوم - الصف الثالث متوسط (Science)</h3>
+<iframe src="books/science3_middle.pdf"></iframe>
+</div>
+
+<h2>📝 امتحانات تجريبية</h2>
+<div class="quiz">
+<p>1- 5 × 6 = ؟</p>
+<button onclick="checkAnswer(this,true)">30</button>
+<button onclick="checkAnswer(this,false)">20</button>
+<button onclick="checkAnswer(this,false)">15</button>
+</div>
+
+</div>
+
+<!-- المرحلة الإعدادية -->
+<div class="section tab-content" id="secondary" style="display:none;">
+<h2>📕 المرحلة الإعدادية</h2>
+
+<!-- الصف الأول إعدادي -->
+<div class="book-card">
+<h3>الرياضيات - الصف الأول إعدادي (Mathematics)</h3>
+<iframe src="books/math1_secondary.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>اللغة العربية - الصف الأول إعدادي (Arabic)</h3>
+<iframe src="books/arabic1_secondary.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>العلوم - الصف الأول إعدادي (Science)</h3>
+<iframe src="books/science1_secondary.pdf"></iframe>
+</div>
+
+<!-- الصف الثاني إعدادي -->
+<div class="book-card">
+<h3>الرياضيات - الصف الثاني إعدادي (Mathematics)</h3>
+<iframe src="books/math2_secondary.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>اللغة العربية - الصف الثاني إعدادي (Arabic)</h3>
+<iframe src="books/arabic2_secondary.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>العلوم - الصف الثاني إعدادي (Science)</h3>
+<iframe src="books/science2_secondary.pdf"></iframe>
+</div>
+
+<!-- الصف الثالث إعدادي -->
+<div class="book-card">
+<h3>الرياضيات - الصف الثالث إعدادي (Mathematics)</h3>
+<iframe src="books/math3_secondary.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>اللغة العربية - الصف الثالث إعدادي (Arabic)</h3>
+<iframe src="books/arabic3_secondary.pdf"></iframe>
+</div>
+<div class="book-card">
+<h3>العلوم - الصف الثالث إعدادي (Science)</h3>
+<iframe src="books/science3_secondary.pdf"></iframe>
+</div>
+
+<h2>📝 امتحانات تجريبية</h2>
+<div class="quiz">
+<p>1- رمز الماء الكيميائي؟</p>
+<button onclick="checkAnswer(this,true)">H₂O</button>
+<button onclick="checkAnswer(this,false)">CO₂</button>
+<button onclick="checkAnswer(this,false)">O₂</button>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+<p>تمت البرمجة بواسطة أحمد خان © 2025 – جميع الحقوق محفوظة</p>
+<div class="social">
+<a href="https://www.instagram.com/_98sf" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@_98ak" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a href="https://t.me/AHMED_KHANA" target="_blank"><i class="fab fa-telegram"></i></a>
+<a href="mailto:info@ahmedkhan.com"><i class="fas fa-envelope"></i></a>
+</div>
+</footer>
+
+<script>
+// تبديل التبويبات
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
+tabs.forEach(btn=>{
+btn.addEventListener("click", ()=>{
+  tabs.forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  let target = btn.getAttribute("data-target");
+  contents.forEach(c=>{
+    c.style.display = (c.id===target) ? "block" : "none";
+  });
+});
+});
+
+// فحص الإجابات
+function checkAnswer(button, correct){
+  if(correct){ button.classList.add("correct"); }
+  else { button.classList.add("wrong"); }
+  button.disabled = true;
+}
+</script>
+
 </body>
 </html>
